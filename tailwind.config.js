@@ -9,6 +9,12 @@ module.exports = {
       sans: ['Outfit', 'sans-serif']
     },
     extend: {
+      spacing: {
+        200: '50rem'
+      },
+      fontSize: {
+        '7.5xl': '5rem'
+      },
       colors: {
         primary: '#4B7FD2',
         baseText: '#1A2B38',

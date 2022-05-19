@@ -1,7 +1,7 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
 
-import HomeButton from '../components/HomeButton';
+import HomeView from '../views/HomeView';
 
 const Home: NextPage = () => {
   return (
@@ -12,12 +12,7 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main>
-        <div>hello world</div>
-        <HomeButton />
-      </main>
-
-      <footer></footer>
+      <HomeView />
     </div>
   );
 };
