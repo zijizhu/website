@@ -1,7 +1,7 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
-import Image from 'next/image';
-import styles from '../styles/Home.module.css';
+
+import HomeButton from '../components/HomeButton';
 
 const Home: NextPage = () => {
   return (
@@ -14,6 +14,7 @@ const Home: NextPage = () => {
 
       <main>
         <div>hello world</div>
+        <HomeButton />
       </main>
 
       <footer></footer>
