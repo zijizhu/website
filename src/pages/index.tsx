@@ -1,7 +1,9 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
 
+import Navbar from '../components/Navbar';
 import HomeView from '../views/HomeView';
+import ProjectsView from '../views/ProjectsView';
 
 const Home: NextPage = () => {
   return (
@@ -11,8 +13,9 @@ const Home: NextPage = () => {
         <meta name="description" content="Zhijie Zhu's portfolio website" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-
+      <Navbar />
       <HomeView />
+      <ProjectsView />
     </div>
   );
 };

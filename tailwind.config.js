@@ -10,7 +10,9 @@ module.exports = {
     },
     extend: {
       spacing: {
-        200: '50rem'
+        128: '32rem',
+        160: '40rem',
+        192: '48rem'
       },
       fontSize: {
         '7.5xl': '5rem'

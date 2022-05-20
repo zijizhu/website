@@ -1,5 +1,4 @@
 import { SVGProps } from 'react';
-import BoxIcon from './icons/BoxIcon';
 
 interface HomeButtonProps {
   Icon: (props: SVGProps<SVGSVGElement>) => JSX.Element;
