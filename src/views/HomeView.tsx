@@ -5,7 +5,7 @@ import PersonIcon from '../components/icons/PersonIcon';
 function HomeView() {
   return (
     <section className="p-8 h-192 flex flex-col items-center justify-center bg-baseBg view-polygon">
-      <div className="flex w-full max-w-3xl flex-col">
+      <div className="flex w-full max-w-6xl flex-col">
         <h3 className="text-2xl font-semibold text-primary animate-fade-in-100ms">
           Hi, I am
         </h3>
@@ -20,7 +20,7 @@ function HomeView() {
           CSESoc Projects Team. You know what I&apos;m most proud of? I&apos;m
           1/3 of logicpop.
         </p>
-        <div className="flex py-8 flex-col lg:flex-row animate-slide-in-200ms">
+        <div className="flex py-8 flex-col md:flex-row animate-slide-in-200ms">
           <HomeButton
             Icon={BoxIcon}
             text="Projects"
