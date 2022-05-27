@@ -1,3 +1,4 @@
+import projects from '../projects';
 import ProjectCard from '../components/ProjectCard';
 
 function ProjectsView() {
@@ -8,27 +9,9 @@ function ProjectsView() {
         <h3 className="my-4 text-2xl font-medium text-primary">
           Some things I&apos;ve built.
         </h3>
-        <ProjectCard
-          sourceLink=""
-          techs={[]}
-          name="Medician"
-          description="UNSW CSESoc Project Competition 2021"
-          detail="Medician is a cross-platform health tracking app that is intuitive and easy to use. You will be able to record details about your symptoms and set notifications for your medical + fitness routines."
-        />
-        <ProjectCard
-          sourceLink=""
-          techs={[]}
-          name="Medician"
-          description="UNSW CSESoc Project Competition 2021"
-          detail="Medician is a cross-platform health tracking app that is intuitive and easy to use. You will be able to record details about your symptoms and set notifications for your medical + fitness routines."
-        />
-        <ProjectCard
-          sourceLink=""
-          techs={[]}
-          name="Medician"
-          description="UNSW CSESoc Project Competition 2021"
-          detail="Medician is a cross-platform health tracking app that is intuitive and easy to use. You will be able to record details about your symptoms and set notifications for your medical + fitness routines."
-        />
+        {projects.map((info, idx) => (
+          <ProjectCard key={idx} {...info} />
+        ))}
       </div>
     </section>
   );

@@ -13,5 +13,6 @@ export interface ProjectInfo {
   detail: string;
   sourceLink: string;
   downloadLink?: string;
-  techs: IconName[];
+  techs: string[];
+  techIconNames: IconName[];
 }

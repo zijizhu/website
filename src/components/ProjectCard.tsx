@@ -16,6 +16,7 @@ function ProjectCard({
   sourceLink,
   downloadLink,
   techs,
+  techIconNames,
   imgLayout = 'left'
 }: {
   imgLayout?: 'left' | 'right';
