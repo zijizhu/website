@@ -6,11 +6,20 @@ import { useWindowSize } from '../hooks';
 import ReactIcon from './icons/ReactIcon';
 import FootstepsImg from '../../public/footsteps.png';
 
-interface ProjectCardProps {
-  imgLayout?: 'left' | 'right';
-}
+import type { ProjectInfo } from '../types';
 
-function ProjectCard({ imgLayout = 'left' }: ProjectCardProps) {
+function ProjectCard({
+  name,
+  link,
+  description,
+  detail,
+  sourceLink,
+  downloadLink,
+  techs,
+  imgLayout = 'left'
+}: {
+  imgLayout?: 'left' | 'right';
+} & ProjectInfo) {
   const { width } = useWindowSize();
   const linkingOnLeft = width && width > 768 && imgLayout === 'left';
 
@@ -34,23 +43,19 @@ function ProjectCard({ imgLayout = 'left' }: ProjectCardProps) {
           { 'md:text-right md:items-end': imgLayout === 'left' }
         ])}
       >
-        <h2 className="py-4 text-3xl font-bold">TaskHouse</h2>
-        <a href="https://richardzhu.me/" className="flex items-center">
+        <h2 className="py-4 text-3xl font-bold">{name}</h2>
+        <a href={link} className="flex items-center">
           <span className="text-xl font-semibold text-primary">
             {linkingOnLeft && (
               <Linking className="inline mx-2 fill-primary w-7 h-7" />
             )}
-            UNSW COMP3900 Capstone project
+            {description}
             {!linkingOnLeft && (
               <Linking className="inline mx-2 fill-primary w-7 h-7" />
             )}
           </span>
         </a>
-        <p className="py-4 text-lg lg:text-xl">
-          TaskHouse is a collaborative platform for teams to communicate the
-          state of their tasks, for users to connect with their collaborators
-          through a user-friendly interface.
-        </p>
+        <p className="py-4 text-lg lg:text-xl">{detail}</p>
         <div
           className={clsx(['flex', { 'md:justify-end': imgLayout === 'left' }])}
         >
