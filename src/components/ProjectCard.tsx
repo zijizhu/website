@@ -5,7 +5,7 @@ import Icon from './Icon';
 import Linking from './icons/Linking';
 import { useWindowSize } from '../hooks';
 import GitHubIcon from './icons/GitHubIcon';
-import FootstepsImg from '../../public/footsteps.png';
+import AppStoreIcon from './icons/AppStoreIcon';
 
 import type { ProjectInfo } from '../types';
 
@@ -18,6 +18,7 @@ function ProjectCard({
   downloadLink,
   techs,
   techIconNames,
+  image,
   imgLayout = 'left'
 }: {
   imgLayout?: 'left' | 'right';
@@ -29,23 +30,32 @@ function ProjectCard({
     <div
       className={clsx([
         'w-full py-8 flex justify-center items-center',
-        { 'flex-row-reverse': imgLayout === 'right' },
-        { 'flex-row': imgLayout === 'left' }
+        { 'flex-col md:flex-row-reverse': imgLayout === 'right' },
+        { 'flex-col md:flex-row': imgLayout === 'left' }
       ])}
     >
       <div
-        className="hidden md:block shadow-lg rounded-lg w-112 lg:w-144"
+        className="md:block rounded-t-lg d:rounded-lg md:shadow-lg lg:w-144"
         style={{ fontSize: 0 }}
       >
-        <Image src={FootstepsImg} alt="footsteps" className="rounded-lg" />
+        <Image
+          src={image}
+          alt="footsteps"
+          className="rounded-t-lg d:rounded-lg"
+        />
       </div>
+
       <div
         className={clsx([
-          'flex-1 flex flex-col py-6 px-6 md:px-0 bg-baseBg md:bg-transparent rounded-lg shadow-lg md:shadow-none',
-          { 'md:text-right md:items-end': imgLayout === 'left' }
+          'flex-1 flex flex-col py-6 px-6 bg-baseBg md:bg-transparent rounded-b-lg shadow-lg md:shadow-none',
+          {
+            'md:pl-6 md:pr-0 md:text-right md:items-end': imgLayout === 'left'
+          },
+          { 'md:pl-0 md:pr-6': imgLayout === 'right' }
         ])}
       >
         <h2 className="py-4 text-3xl font-bold">{name}</h2>
+
         <a href={link}>
           <span className="text-md md:text-xl font-semibold text-primary">
             {linkingOnLeft && (
@@ -57,9 +67,14 @@ function ProjectCard({
             )}
           </span>
         </a>
+
         <p className="py-4 text-lg lg:text-xl">{detail}</p>
+
         <div
-          className={clsx(['flex', { 'md:justify-end': imgLayout === 'left' }])}
+          className={clsx([
+            'flex items-center',
+            { 'md:justify-end': imgLayout === 'left' }
+          ])}
         >
           {techIconNames.map((name, idx) => (
             <Icon
@@ -73,13 +88,29 @@ function ProjectCard({
             />
           ))}
         </div>
-        <div className="py-2 flex items-center text-lg text-medium">
-          {sourceLink && (
-            <a href={sourceLink}>
-              <GitHubIcon width={40} height={40} className="inline mr-2" />
-            </a>
-          )}
-        </div>
+
+        {(sourceLink || downloadLink) && (
+          <div className={'py-2 flex items-center'}>
+            {sourceLink && (
+              <a
+                href={sourceLink}
+                className={clsx([
+                  'py-2 flex items-center',
+                  { 'mr-4': imgLayout === 'right' },
+                  { 'ml-4': imgLayout === 'left' }
+                ])}
+              >
+                <span className="mr-1 text-xl font-semibold">source</span>
+                <GitHubIcon width={40} height={40} className="inline" />
+              </a>
+            )}
+            {downloadLink && (
+              <a href={downloadLink}>
+                <AppStoreIcon />
+              </a>
+            )}
+          </div>
+        )}
       </div>
     </div>
   );

@@ -1,3 +1,5 @@
+import { StaticImageData } from 'next/image';
+
 export type IconName =
   | 'database'
   | 'firebase'
@@ -11,8 +13,9 @@ export interface ProjectInfo {
   description: string;
   link?: string;
   detail: string;
-  sourceLink: string;
+  sourceLink?: string;
   downloadLink?: string;
   techs: string[];
   techIconNames: IconName[];
+  image: StaticImageData;
 }
