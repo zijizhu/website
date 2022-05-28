@@ -33,7 +33,7 @@ function Navbar() {
       unmountOnExit
       in={showNav}
       timeout={300}
-      classNames="fadedown"
+      classNames="navfade"
     >
       <div className="fixed right-0 z-20 m-4 p-2 shadow-around bg-baseBg rounded-lg hover:bg-specialBg transition duration-300">
         {navLinks.map((item) => (
