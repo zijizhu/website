@@ -10,7 +10,11 @@ function ProjectsView() {
           Some things I&apos;ve built.
         </h3>
         {projects.map((info, idx) => (
-          <ProjectCard key={idx} {...info} />
+          <ProjectCard
+            key={idx}
+            {...info}
+            imgLayout={idx % 2 === 0 ? 'right' : 'left'}
+          />
         ))}
       </div>
     </section>

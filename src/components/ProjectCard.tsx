@@ -1,9 +1,10 @@
 import clsx from 'clsx';
 import Image from 'next/image';
 
+import Icon from './Icon';
 import Linking from './icons/Linking';
 import { useWindowSize } from '../hooks';
-import ReactIcon from './icons/ReactIcon';
+import GitHubIcon from './icons/GitHubIcon';
 import FootstepsImg from '../../public/footsteps.png';
 
 import type { ProjectInfo } from '../types';
@@ -40,13 +41,13 @@ function ProjectCard({
       </div>
       <div
         className={clsx([
-          'flex-1 flex flex-col p-6 bg-baseBg md:bg-transparent rounded-lg shadow-lg md:shadow-none',
+          'flex-1 flex flex-col py-6 px-6 md:px-0 bg-baseBg md:bg-transparent rounded-lg shadow-lg md:shadow-none',
           { 'md:text-right md:items-end': imgLayout === 'left' }
         ])}
       >
         <h2 className="py-4 text-3xl font-bold">{name}</h2>
-        <a href={link} className="flex items-center">
-          <span className="text-xl font-semibold text-primary">
+        <a href={link}>
+          <span className="text-md md:text-xl font-semibold text-primary">
             {linkingOnLeft && (
               <Linking className="inline mx-2 fill-primary w-7 h-7" />
             )}
@@ -60,7 +61,24 @@ function ProjectCard({
         <div
           className={clsx(['flex', { 'md:justify-end': imgLayout === 'left' }])}
         >
-          <ReactIcon height={40} width={40} />
+          {techIconNames.map((name, idx) => (
+            <Icon
+              key={idx}
+              name={name}
+              className={clsx([
+                'my-2',
+                { 'mr-3': imgLayout === 'right' || (width && width <= 768) },
+                { 'md:ml-3': imgLayout === 'left' }
+              ])}
+            />
+          ))}
+        </div>
+        <div className="py-2 flex items-center text-lg text-medium">
+          {sourceLink && (
+            <a href={sourceLink}>
+              <GitHubIcon width={40} height={40} className="inline mr-2" />
+            </a>
+          )}
         </div>
       </div>
     </div>

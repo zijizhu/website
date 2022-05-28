@@ -1,10 +1,9 @@
-import { SVGAttributes } from 'react';
-
 import MSTIcon from './icons/MSTIcon';
 import ReactIcon from './icons/ReactIcon';
 import DatabaseIcon from './icons/DatabaseIcon';
 import FirebaseIcon from './icons/FirebaseIcon';
 import MaterialIcon from './icons/MaterialIcon';
+import NotFoundIcon from './icons/NotFoundIcon';
 import TypeScriptIcon from './icons/TypeScriptIcon';
 
 import type { IconName } from '../types';
@@ -17,21 +16,21 @@ interface IconProps {
 function Icon({ name, className }: IconProps) {
   switch (name) {
     case 'mst':
-      return <MSTIcon className={className} />;
+      return <MSTIcon height={40} width={40} className={className} />;
     case 'react':
-      return <ReactIcon className={className} />;
+      return <ReactIcon height={40} width={40} className={className} />;
     case 'database':
-      return <DatabaseIcon className={className} />;
+      return <DatabaseIcon height={40} width={40} className={className} />;
     case 'firebase':
-      return <FirebaseIcon className={className} />;
+      return <FirebaseIcon height={40} width={40} className={className} />;
     case 'material':
-      return <MaterialIcon className={className} />;
+      return <MaterialIcon height={40} width={40} className={className} />;
     case 'material':
-      return <MaterialIcon className={className} />;
+      return <MaterialIcon height={40} width={40} className={className} />;
     case 'typescript':
-      return <TypeScriptIcon className={className} />;
+      return <TypeScriptIcon height={40} width={40} className={className} />;
     default:
-      break;
+      return <NotFoundIcon height={40} width={40} className={className} />;
   }
 }
 
