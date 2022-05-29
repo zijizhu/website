@@ -12,7 +12,7 @@ const navLinks: { view: ViewName; name: string; link: string }[] = [
 ];
 
 function Navbar() {
-  const [showNav, setShowNav] = useState<boolean>(true);
+  const [showNav, setShowNav] = useState<boolean>(false);
   const [lastScrollY, setLastScrollY] = useState<number>(0);
   const { currView } = useStore();
 
@@ -32,6 +32,14 @@ function Navbar() {
 
     return () => window.removeEventListener('scroll', onWindowScroll);
   }, [lastScrollY]);
+
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      setShowNav(true);
+    }, 1500);
+
+    return () => clearTimeout(timeout);
+  }, []);
 
   return (
     <CSSTransition
