@@ -1,14 +1,26 @@
-import type { NextPage } from 'next';
 import Head from 'next/head';
+import { useRef } from 'react';
+import type { NextPage } from 'next';
 
-import ViewLayout from '../components/ViewLayout';
-import Navbar from '../components/Navbar';
+import type { ViewName } from '../types';
 import HomeView from '../views/HomeView';
+import Navbar from '../components/Navbar';
 import ProjectsView from '../views/ProjectsView';
+import ViewLayout from '../components/ViewLayout';
+
+type ViewRef = {
+  [key in ViewName]: HTMLDivElement | null;
+};
 
 const Home: NextPage = () => {
+  const viewRefs = useRef<ViewRef>({
+    home: null,
+    projects: null,
+    about: null
+  });
+
   return (
-    <div>
+    <>
       <Head>
         <title>Zhijie Zhu</title>
         <meta name="description" content="Zhijie Zhu's portfolio website" />
@@ -16,14 +28,18 @@ const Home: NextPage = () => {
       </Head>
       <Navbar />
 
-      <ViewLayout polygon className="h-192">
+      <ViewLayout
+        polygon
+        className="h-192"
+        refCallback={(el) => (viewRefs.current.home = el)}
+      >
         <HomeView />
       </ViewLayout>
 
-      <ViewLayout>
+      <ViewLayout refCallback={(el) => (viewRefs.current.projects = el)}>
         <ProjectsView />
       </ViewLayout>
-    </div>
+    </>
   );
 };
 

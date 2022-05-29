@@ -40,7 +40,7 @@ function Navbar() {
           <a
             key={item.num}
             href={item.link}
-            className="mx-2 my-1 p-2 font-semibold hover:text-primary text-lg transition duration-500"
+            className="mx-2 my-1 p-2 font-semibold hover:text-primary text-lg transition duration-300"
           >
             <span className="mr-2 text-primary">{item.num}</span>
             {item.name}

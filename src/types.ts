@@ -1,5 +1,7 @@
 import { StaticImageData } from 'next/image';
 
+export type ViewName = 'home' | 'projects' | 'about';
+
 export type IconName =
   | 'database'
   | 'firebase'
