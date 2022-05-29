@@ -58,11 +58,11 @@ function ProjectCard({
 
         <a href={link}>
           <span className="text-md md:text-xl font-semibold text-primary">
-            {linkingOnLeft && (
+            {link && linkingOnLeft && (
               <Linking className="inline mx-2 fill-primary w-7 h-7" />
             )}
             {description}
-            {!linkingOnLeft && (
+            {link && !linkingOnLeft && (
               <Linking className="inline mx-2 fill-primary w-7 h-7" />
             )}
           </span>
@@ -95,15 +95,22 @@ function ProjectCard({
               <a
                 href={sourceLink}
                 className={clsx([
-                  'py-2 flex items-center',
+                  'group py-2 flex items-center',
                   { 'mr-4': imgLayout === 'right' },
                   { 'ml-4': imgLayout === 'left' }
                 ])}
               >
-                <span className="mr-1 text-xl font-semibold">source</span>
-                <GitHubIcon width={40} height={40} className="inline" />
+                <span className="mr-1 text-xl font-semibold group-hover:text-primary duration-300">
+                  source
+                </span>
+                <GitHubIcon
+                  width={40}
+                  height={40}
+                  className="inline group-hover:fill-primary duration-300"
+                />
               </a>
             )}
+
             {downloadLink && (
               <a href={downloadLink}>
                 <AppStoreIcon />
