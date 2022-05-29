@@ -14,12 +14,9 @@ export function useOnScreen(ref: MutableRefObject<HTMLDivElement | null>) {
   }, []);
 
   useEffect(() => {
-    if (ref.current && observer) {
-      observer.observe(ref.current);
-    }
-    return () => {
-      observer?.disconnect();
-    };
+    if (ref.current && observer) observer.observe(ref.current);
+
+    return () => observer?.disconnect();
   }, [observer, ref]);
 
   return isIntersecting;
