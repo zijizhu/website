@@ -1,23 +1,30 @@
 import clsx from 'clsx';
-import { ReactNode } from 'react';
+import { ReactNode, useRef, useEffect } from 'react';
+
+import { ViewName } from '../types';
+import useStore from '../stores';
 import { useOnScreen } from '../hooks';
 
 interface ViewLayoutProps {
-  refCallback: (el: HTMLDivElement | null) => void;
+  view: ViewName;
   polygon?: boolean;
   children: ReactNode;
   className?: string;
 }
 
-function ViewLayout({
-  polygon,
-  refCallback,
-  className,
-  children
-}: ViewLayoutProps) {
+function ViewLayout({ view, polygon, className, children }: ViewLayoutProps) {
+  const viewRef = useRef<HTMLElement | null>(null);
+  const isOnScreen = useOnScreen(viewRef);
+  const { setCurrView } = useStore();
+
+  useEffect(() => {
+    if (isOnScreen) setCurrView(view);
+  }, [isOnScreen, view, setCurrView]);
+
   return (
     <section
-      ref={refCallback}
+      ref={(el) => (viewRef.current = el)}
+      id={`${view}view`}
       className={clsx([
         'p-8 flex flex-col items-center justify-center',
         { 'bg-baseBg view-polygon': polygon },

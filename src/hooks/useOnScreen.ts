@@ -1,6 +1,6 @@
 import { useState, useEffect, MutableRefObject } from 'react';
 
-export function useOnScreen(ref: MutableRefObject<HTMLDivElement | null>) {
+export function useOnScreen(ref: MutableRefObject<HTMLElement | null>) {
   const [isIntersecting, setIntersecting] = useState(false);
   const [observer, setObserver] = useState<IntersectionObserver | null>(null);
 
