@@ -1,5 +1,5 @@
 import clsx from 'clsx';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { CSSTransition } from 'react-transition-group';
 
 import useStore from '../stores';
@@ -14,6 +14,7 @@ const navLinks: { view: ViewName; name: string; link: string }[] = [
 function Navbar() {
   const [showNav, setShowNav] = useState<boolean>(false);
   const [lastScrollY, setLastScrollY] = useState<number>(0);
+  const nodeRef = useRef<HTMLElement | null>(null);
   const { currView } = useStore();
 
   useEffect(() => {
@@ -46,9 +47,13 @@ function Navbar() {
       unmountOnExit
       in={showNav}
       timeout={300}
+      nodeRef={nodeRef}
       classNames="navfade"
     >
-      <div className="fixed right-0 z-20 m-4 px-2 flex shadow-around bg-baseBg rounded-lg hover:bg-specialBg transition duration-300">
+      <div
+        ref={(el) => (nodeRef.current = el)}
+        className="fixed right-0 z-20 m-4 px-2 flex shadow-around bg-baseBg rounded-lg hover:bg-specialBg transition duration-300"
+      >
         {navLinks.map((item, idx) => (
           <a
             key={idx}

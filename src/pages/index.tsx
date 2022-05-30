@@ -11,6 +11,7 @@ const Home: NextPage = () => {
     <>
       <Head>
         <title>Zhijie Zhu</title>
+        <meta name="theme-color" content="#F4F5F7" />
         <meta name="description" content="Zhijie Zhu's portfolio website" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
