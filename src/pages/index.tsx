@@ -2,6 +2,7 @@ import Head from 'next/head';
 import type { NextPage } from 'next';
 
 import HomeView from '../views/HomeView';
+import AboutView from '../views/AboutView';
 import Navbar from '../components/Navbar';
 import ProjectsView from '../views/ProjectsView';
 import ViewLayout from '../components/ViewLayout';
@@ -18,12 +19,16 @@ const Home: NextPage = () => {
 
       <Navbar />
 
-      <ViewLayout polygon view="home" className="h-192">
+      <ViewLayout botSkew view="home" className="h-192">
         <HomeView />
       </ViewLayout>
 
       <ViewLayout view="projects" observerThreshold={0.25}>
         <ProjectsView />
+      </ViewLayout>
+
+      <ViewLayout topSkew view="about" className="h-192">
+        <AboutView />
       </ViewLayout>
     </>
   );

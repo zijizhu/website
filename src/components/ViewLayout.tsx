@@ -7,7 +7,8 @@ import { useOnScreen } from '../hooks';
 
 interface ViewLayoutProps {
   view: ViewName;
-  polygon?: boolean;
+  topSkew?: boolean;
+  botSkew?: boolean;
   children: ReactNode;
   className?: string;
   observerThreshold?: number;
@@ -15,7 +16,8 @@ interface ViewLayoutProps {
 
 function ViewLayout({
   view,
-  polygon,
+  topSkew,
+  botSkew,
   className,
   children,
   observerThreshold
@@ -34,7 +36,8 @@ function ViewLayout({
       id={`${view}view`}
       className={clsx([
         'p-8 flex flex-col items-center justify-center',
-        { 'bg-baseBg view-polygon': polygon },
+        { 'bg-baseBg view-top-skew': topSkew },
+        { 'bg-baseBg view-bot-skew': botSkew },
         className
       ])}
     >
