@@ -5,7 +5,7 @@ import PersonIcon from '../components/icons/PersonIcon';
 function HomeView() {
   return (
     <>
-      <h3 className="text-2xl font-semibold text-primary animate-fade-in-100ms">
+      <h3 className="mt-10 text-2xl font-semibold text-primary animate-fade-in-100ms">
         Hi, I am
       </h3>
       <h1 className="mt-4 text-6xl lg:text-7.5xl font-bold select-none animate-fade-in-150ms">

@@ -58,7 +58,7 @@ function Navbar() {
           <a
             key={idx}
             href={item.link}
-            className="group mx-2 my-1 p-2 flex flex-col items-center font-semibold text-lg"
+            className="group mx-2 p-2 flex flex-col items-center font-semibold text-lg"
             onClick={() =>
               document
                 .getElementById(`${item.view}view`)
