@@ -10,11 +10,18 @@ interface ViewLayoutProps {
   polygon?: boolean;
   children: ReactNode;
   className?: string;
+  observerThreshold?: number;
 }
 
-function ViewLayout({ view, polygon, className, children }: ViewLayoutProps) {
+function ViewLayout({
+  view,
+  polygon,
+  className,
+  children,
+  observerThreshold
+}: ViewLayoutProps) {
   const viewRef = useRef<HTMLElement | null>(null);
-  const isOnScreen = useOnScreen(viewRef);
+  const isOnScreen = useOnScreen(viewRef, observerThreshold);
   const { setCurrView } = useStore();
 
   useEffect(() => {

@@ -72,7 +72,7 @@ function Navbar() {
             </div>
             <div
               className={clsx([
-                'h-1 w-4 bg-primary rounded-full',
+                'mt-1 h-1 w-4 bg-primary rounded-full',
                 { visible: currView === item.view },
                 { invisible: currView !== item.view }
               ])}

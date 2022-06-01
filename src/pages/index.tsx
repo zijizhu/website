@@ -22,7 +22,7 @@ const Home: NextPage = () => {
         <HomeView />
       </ViewLayout>
 
-      <ViewLayout view="projects">
+      <ViewLayout view="projects" observerThreshold={0.25}>
         <ProjectsView />
       </ViewLayout>
     </>

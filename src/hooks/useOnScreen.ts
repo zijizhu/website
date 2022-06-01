@@ -1,6 +1,9 @@
 import { useState, useEffect, MutableRefObject } from 'react';
 
-export function useOnScreen(ref: MutableRefObject<HTMLElement | null>) {
+export function useOnScreen(
+  ref: MutableRefObject<HTMLElement | null>,
+  threshold: number | undefined = 0.6
+) {
   const [isIntersecting, setIntersecting] = useState(false);
   const [observer, setObserver] = useState<IntersectionObserver | null>(null);
 
@@ -8,10 +11,10 @@ export function useOnScreen(ref: MutableRefObject<HTMLElement | null>) {
     setObserver(
       new IntersectionObserver(
         ([entry]) => setIntersecting(entry.isIntersecting),
-        { threshold: 0.6 }
+        { threshold }
       )
     );
-  }, []);
+  }, [threshold]);
 
   useEffect(() => {
     if (ref.current && observer) observer.observe(ref.current);
